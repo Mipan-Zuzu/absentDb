@@ -1,0 +1,191 @@
+ .input-box i {
+      transition: transform 0.3s cubic-bezier(.4,2,.3,1), color 0.2s;
+    }
+    .input-box input:focus + i,
+    .input-box input:active + i {
+      transform: translateY(-8px) scale(1.15);
+      color: #f57c00;
+    }
+    .input-box input:focus ~ i,
+    .input-box input:active ~ i {
+      transform: translateY(-8px) scale(1.15);
+      color: #f57c00;
+    }
+    @media (max-width: 760px) {
+      .move-left, .move-right {
+        transform: none !important;
+      }
+    }
+    @media (max-width: 760px) {
+      .container {
+        flex-direction: column;
+        width: 98vw;
+        height: auto;
+        min-height: 100vh;
+        align-items: stretch;
+      }
+      .form-box {
+        width: 100% !important;
+        min-width: 0;
+        padding: 32px 16px;
+        box-sizing: border-box;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #ffb74d, #f57c00, #ffd700, #ff9800);
+      background-size: 800% 800%;
+      animation: gradientMove 12s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+
+    .container {
+      width: 850px;
+      height: 500px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.2);
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .form-box {
+      width: 50%;
+      padding: 40px;
+      transition: .6s ease-in-out;
+    }
+
+    .left {
+      background: linear-gradient(135deg, #ffb74d, #f57c00);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .left button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: transparent;
+      border: 2px solid #fff;
+      border-radius: 25px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .3s;
+    }
+    .left button:hover {
+      background: #fff;
+      color: #f57c00;
+    }
+
+    .right h2 {
+      color: #f57c00;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .input-box i {
+      margin-right: 10px;
+      color: gray;
+    }
+
+    .input-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .social-icons i {
+      font-size: 30px;
+      margin: 0 10px;
+      cursor: pointer;
+      color: #f57c00;
+      transition: .3s;
+    }
+
+    .social-icons i:hover {
+      transform: scale(1.2);
+      color: orange;
+    }
+
+    .right button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #f57c00;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .right button:hover {
+      background: #e65100;
+    }
+
+    .move-left { transform: translateX(-100%); }
+    .move-right { transform: translateX(100%); }
+
+    .login-container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .login-container input,
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    @media (max-width: 600px) {
+      .login-container {
+        max-width: 98vw;
+        padding: 1rem;
+      }
+      .login-container input,
+      .login-container button {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+    }
