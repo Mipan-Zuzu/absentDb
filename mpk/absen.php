@@ -1,19 +1,36 @@
 <?php
 session_start();
-if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header("Location: loginn.php");
+if (!isset($_SESSION['login'])) {
+    header("Location: ../loginn.php");
     exit;
 }
+
+include '../koneksi.php';
+
+$id_kelas = $_SESSION['id_kelas'] ?? $_GET['id_kelas'] ?? null;
+
+if (!$id_kelas) {
+    echo "<p style='color:red;'>ID kelas tidak ditemukan!</p>";
+    exit;
+}
+
+$result = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id_kelas='$id_kelas'");
 ?>
 
-<!doctype html> 
+<!doctype html>
 <html lang="id">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Absen Siswa — Demo</title>
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../style/style-absen.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Absen Siswa — Demo</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style-absen.css">
+  <script>
+  const ID_KELAS = "<?php echo $_SESSION['id_kelas']; ?>";
+</script>
+<script src="../js/main.js"></script>
+
 </head>
 <body>
 
@@ -31,14 +48,14 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     <div class="toolbar">
       <div class="date-picker" title="Calender">
         <div id="todayDesktop"></div>
-        <i class='bx bx-calendar'></i>  
+        <i class='bx bx-calendar'></i>
       </div>
 
       <div class="legend" aria-hidden="true">
         <div class="item"><span class="dot hadir"></span> Hadir</div>
         <div class="item"><span class="dot izin"></span> Izin</div>
         <div class="item"><span class="dot sakit"></span> Sakit</div>
-        <div class="item"><span class="dot dispen"></span> Dispen</div>
+        <div class="item"><span class="dot dispen"></span> Telat</div>
         <div class="item"><span class="dot alpha"></span> Alpha</div>
       </div>
 
@@ -79,7 +96,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
       <div style="flex:1" class="date-picker">
         <div id="todayMobile"></div>
         <i class="bx bx-calendar"></i>
-        <div class="time"> 
+        <div class="time">
         </div>
       </div>
     </div>
@@ -89,7 +106,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
         <div class="item"><span class="dot hadir"></span> Hadir</div>
         <div class="item"><span class="dot izin"></span> Izin</div>
         <div class="item"><span class="dot sakit"></span> Sakit</div>
-        <div class="item"><span class="dot dispen"></span> Dispen</div>
+        <div class="item"><span class="dot dispen"></span> Telat</div>
         <div class="item"><span class="dot alpha"></span> Alpha</div>
       </div>
       <div style="display: none;" class="count" id="countMobile">0</div>
@@ -97,16 +114,15 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
 
     <div class="search">
       <i class="bx bx-search"></i>
-      <input id="searchMobile" type="text" placeholder="Cari nama siswa..." />
+      <input id="searchMobile" type="text" placeholder="Cari Rekap absen..." />
     </div>
 
     <!-- ! Important dont delete this -->
-        <div class="history" id="historyDesktop" style="margin-top:12px;">
+    <div class="history" id="historyDesktop" style="margin-top:12px;">
       <h4 style="margin:6px 0 8px 0">History</h4>
       <div id="historyListDesktop"></div>
     </div>
-
-    <!-- todo Gak penting tapi gak boleh di ahpus -->
+    <!--! todo Gak penting tapi gak boleh di hapus -->
     <div style="display: none;" class="list" id="listMobile"></div>
     <div class="footer">
       <div style="font-weight:700;display: none;" id="totalMobile">0 siswa</div>
@@ -122,32 +138,88 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     </div>
   </div>
 
-<div id="assistiveTouch">
+  <div id="assistiveTouch">
+  </div>
+  <div id="assistiveMenu">
+    <div class="pointerCur" id="helpBtnMobile">
+      <i title="Help" class='bx bx-info-circle'></i><br>
+      <span class="isiNav">Help</span>
+    </div>
+    <div class="back pointerCur" id="logout">
+      <i title="Utama" class='bx bx-circle'></i><br>
+      <span class="isiNav">Out</span>
+    </div>
+    <div id="gptToggle" class="pointerCur">
+      <i title="Gpt" class='bx bx-exit'></i><br>
+    <span class="isiNav">Gpt</span>
 </div>
-<div id="assistiveMenu">
-  <div class="pointerCur" id="helpBtnMobile">
-    <i title="Help" class='bx bx-info-circle'></i><br>
-    <span class="isiNav">Help</span>
+
   </div>
-  <div class="back pointerCur">
-    <i  title="Utama" class='bx bx-circle'></i><br>
-    <span class="isiNav">Back</span>
-  </div>
-  <div onclick="logouts()" class="pointerCur">
-    <i  title="LogOut" class='bx bx-exit'></i><br>
-    <span class="isiNav">Out</span>
-  </div>
-</div>
 
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal" id="modalContent" role="dialog" aria-modal="true">
     </div>
   </div>
-  <script src="./js/absen.js"></script>
+
+  <script src="absen.js"></script>
   <script>
-    function logouts() {
-  window.location.href = 'logout.php'
-}
+    document.addEventListener('DOMContentLoaded', function () {
+      // ketika tombol "History" diklik
+      document.getElementById('historyToggle').addEventListener('click', function () {
+        (
+          fetch.then(response => response.json()) 
+        sesponse.json())
+        .then(data => {
+          let html = `
+          <table border="1" cellspacing="0" cellpadding="6" style="width:100%;border-collapse:collapse;text-align:left">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Absen</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+          data.forEach((siswa, index) => {
+            html += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${siswa.nama}</td>
+              <td>${siswa.ke}</td>
+              <td>${siswa.keterangan}</td>
+            </tr>
+          `;
+          });
+
+          html += '</tbody></table>';
+
+          document.getElementById('historyListDesktop').innerHTML = html;
+        })
+        .catch(err => {
+          document.getElementById('historyListDesktop').innerHTML = '<p style="color:red;">Gagal memuat data siswa.</p>';
+          console.error(err);
+        });
+    });
+});;
+  document.getElementById('helpBtnDesktop').addEventListener('click', function() {
+    document.getElementById('driverSidebar').classList.add('open');
+  });
+
+  document.getElementById('closeDriver').addEventListener('click', function() {
+    document.getElementById('driverSidebar').classList.remove('open');
+  });
+
+  const logOut = document.getElementById('logout')
+  logOut.addEventListener('click', function () {
+    if (confirm("Yakin mau logout?")) {
+          window.location.href = "../logout.php";
+        })
+  })
   </script>
+
 </body>
+
 </html>

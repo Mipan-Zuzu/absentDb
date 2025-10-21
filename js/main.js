@@ -1,3 +1,4 @@
+
 function showCard(type) {
   const card = document.getElementById("card-container");
   let html = "";

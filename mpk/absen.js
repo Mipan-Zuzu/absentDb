@@ -15,7 +15,6 @@ function initStudents() {
     });
 }
 
-
 const state = {
   students: [],
   filter: "",
@@ -199,9 +198,9 @@ function showHelp() {
     <p class="small">Panduan singkat: Cari siswa dengan search, pilih status lewat dropdown. Setelah selesai klik Kirim untuk menyimpan rekap Absen hari ini.</p>
     <div class="help-grid" style="margin-top:8px">
       <div class="help-images">
-        <img src="asset/search.jpg" alt="mock1" />
-        <img src="asset/status.jpg" alt="mock2" />
-        <img src="asset/kirim.jpg" alt="mock3" />
+        <img src="../asset/search.jpg" alt="mock1" />
+        <img src="../asset/status.jpg" alt="mock2" />
+        <img src="../asset/kirim.jpg" alt="mock3" />
       </div>
       <div style="flex:1">
         <p class="small">Fitur:</p>

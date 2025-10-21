@@ -1,36 +1,31 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'loginn.php';
 
 $username = $_POST['username'];
-$password = md5($_POST['password']);
+$password = md5($_POST['password']); 
 
- 
 $sql = "SELECT * FROM mpk WHERE username='$username' AND password='$password'";
-
 $query = mysqli_query($koneksi, $sql);
 $cek = mysqli_num_rows($query);
 
-if($cek > 0) {
+if ($cek > 0) {
     $data = mysqli_fetch_assoc($query);
 
-    //simpan session
     $_SESSION['username'] = $data['username'];
+    $_SESSION['id_kelas'] = $data['id_kelas'];
     $_SESSION['login'] = true;
-    header("Location: halamanutama.php");
 
-    echo"<script>
-        alert('Login Berhasil');
-        window.location.href = 'mpk/absen.php';
-        </script>";
+    $id_kelas = $data['id_kelas'];
+    echo "<script>
+        alert('Login berhasil! Selamat datang, {$data['username']}');
+        window.location.href = 'mpk/absen.php?id_kelas={$id_kelas}';
+    </script>";
 } else {
-    echo"<script>
-    popup.classList.add('show');
-        setTimeout(()=>{
+    echo "<script>
+        alert('Login gagal! Username atau password salah.');
         window.location.href = 'loginn.php';
-        },2000)
-        </script>";
-   
+    </script>";
 }
 ?>
+

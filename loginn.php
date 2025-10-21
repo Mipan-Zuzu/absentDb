@@ -207,11 +207,11 @@
         <button onclick="changeRole('asset/Dictionary-pana.png','Mpk')" class="flex flex-col items-center">
           <i title="Mpk" class='bx bx-desktop text-3xl bg-orange-100 p-3 rounded-lg'></i>
         </button>
-        <button onclick="changeRole('asset/teacher.png','Guru')" class="flex flex-col items-center">
-          <i title="guru" class='bx bx-group text-3xl bg-orange-100 p-3 rounded-lg'></i>
+        <button onclick="changeRole('asset/parents.png','ortu')" class="flex flex-col items-center">
+          <i title="ortu" class='bx bx-group text-3xl bg-orange-100 p-3 rounded-lg'></i>
         </button>
-        <button onclick="changeRole('asset/parents.png','Ortu')" class="flex flex-col items-center">
-          <i title="ortu" class='bx bxs-graduation text-3xl bg-orange-100 p-3 rounded-lg'></i>
+        <button onclick="changeRole('asset/teacher.png','guru')" class="flex flex-col items-center">
+          <i title="guru" class='bx bxs-graduation text-3xl bg-orange-100 p-3 rounded-lg'></i>
         </button>
       </div>
 
