@@ -15,6 +15,7 @@ function initStudents() {
     });
 }
 
+
 const state = {
   students: [],
   filter: "",
@@ -235,9 +236,9 @@ function submitHandler() {
   const summary = summarizeCounts(payload.records);
   const html = `
     <h3>Konfirmasi Pengiriman</h3>
-    <p class="small">Apakah anda yakin akan mengirim daftar ini untuk tanggal <strong>${
+    <p class="small">Apakah anda yakin akan mengirim daftar ini untuk tanggal <h3>${
       state.date
-    }</strong>?</p>
+    }</h3>?</p>
     <div style="display:flex;gap:10px;margin-top:8px">
       <div><strong>Hadir:</strong> ${summary.hadir || 0}</div>
       <div><strong>Izin:</strong> ${summary.izin || 0}</div>
@@ -476,5 +477,8 @@ document.querySelector('.time').innerHTML = time
 }
 setInterval(timesUp,1000)
 
-console.log('test')
+const user = document.getElementById('user')
+const getUser = localStorage.getItem('nama')
+getUser.came
+user.textContent = getUser ? getUser : "guest"
 

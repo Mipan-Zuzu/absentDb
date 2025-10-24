@@ -41,6 +41,9 @@ $result = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id_kelas='$id_kelas'
         <div class="subtitle">Today</div>
       </div>
       <div style="display:flex;align-items:center;gap:12px">
+        <div>
+          <h1 style="font-size: 15px; color: green;" id="user"></h1>
+        </div>
         <div class="avatar" title="profile"></div>
       </div>
     </div>

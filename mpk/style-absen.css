@@ -706,3 +706,8 @@ button.warn {
 #driverSidebar li {
   margin-bottom: 6px;
 }
+
+.isiNav{
+  color: white;
+  display: none;
+}

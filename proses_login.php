@@ -19,6 +19,7 @@ if ($cek > 0) {
     $id_kelas = $data['id_kelas'];
     echo "<script>
         alert('Login berhasil! Selamat datang, {$data['username']}');
+        localStorage.setItem(`nama`, `{$data['username']}`);
         window.location.href = 'mpk/absen.php?id_kelas={$id_kelas}';
     </script>";
 } else {
