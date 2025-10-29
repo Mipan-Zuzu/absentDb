@@ -1,25 +1,23 @@
 <?php
-include "koneksi.php";
+header('Content-Type: application/json');
+include './koneksi.php'; // atau sesuaikan path
 
-$sql = "SELECT siswa.*, kelas.nama_kelas 
-        FROM siswa  
-        JOIN kelas ON siswa.id_kelas = kelas.id_kelas";
-$result = $koneksi->query($sql);
+$id_kelas = $_GET['id_kelas'] ?? null;
 
-if(!$result){
-    http_response_code(500);
-    echo json_encode(["error" => $koneksi->error]);
-    exit;
+if (!$id_kelas) {
+  echo json_encode(["error" => "ID kelas tidak dikirim"]);
+  exit;
 }
 
-$data = [];
+$query = "SELECT * FROM siswa WHERE id_kelas = ?";
+$stmt = $koneksi->prepare($query);
+$stmt->bind_param("i", $id_kelas);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$siswa = [];
 while ($row = $result->fetch_assoc()) {
-    $data[] = [
-        "id" => $row["id_siswa"],
-        "name" => $row["nama_siswa"],
-        "profile" => "Kelas " . $row["nama_kelas"]
-    ];
+  $siswa[] = $row;
 }
 
-header(header: "Content-Type: application/json");
-echo json_encode($data);
+echo json_encode($siswa);

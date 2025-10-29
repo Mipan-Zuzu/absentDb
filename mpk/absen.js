@@ -482,3 +482,32 @@ const getUser = localStorage.getItem('nama')
 getUser.came
 user.textContent = getUser ? getUser : "guest"
 
+
+
+
+fetch(`../get_siswa.php?id_kelas=${FINAL_ID_KELAS}`)
+  .then(res => res.text()) // ambil mentahan dulu
+  .then(text => {
+    console.log("Raw response dari PHP:", text);
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      console.error("Respon bukan JSON valid:", e);
+      alert("Respon server tidak valid, cek console log.");
+      return;
+    }
+
+    if (!Array.isArray(data)) {
+      console.error("Respon bukan array:", data);
+      alert(data.error || "Gagal memuat siswa. (respon bukan array)");
+      return;
+    }
+
+    state.students = data.map(s => ({ ...s, status: "hadir" }));
+    renderAll();
+  })
+  .catch(err => {
+    console.error("Gagal ambil data siswa:", err);
+  });
