@@ -88,17 +88,14 @@ $result = mysqli_query($koneksi, $sql);
     </table>
 </div>
 
-<!-- Modal Dialog ala macOS -->
 <dialog id="my_modal_1" class="modal">
     <div class="modal-box relative p-5">
-        <!-- Traffic light macOS -->
         <div class="absolute top-2 left-3 flex space-x-2">
             <span class="w-3 h-3 bg-red-500 rounded-full"></span>
             <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
             <span class="w-3 h-3 bg-green-500 rounded-full"></span>
         </div>
 
-        <!-- Konten Modal -->
         <h3 class="text-lg font-bold mt-3" id="modalNama">Nama Siswa</h3>
         <p class="py-2"><strong>Kelas:</strong> <span id="modalKelas"></span></p>
         <p class="py-2"><strong>Tanggal:</strong> <span id="modalTgl"></span></p>

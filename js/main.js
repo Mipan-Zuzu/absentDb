@@ -20,7 +20,6 @@ function closeCard() {
 }
 
 function calls() {
-  const inputs = document.getElementById("inputss").value;
   const output = document.getElementById("output");
 
   fetch(

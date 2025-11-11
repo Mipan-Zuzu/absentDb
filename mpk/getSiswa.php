@@ -1,14 +1,17 @@
 <?php
+session_start();
 header('Content-Type: application/json');
-include './koneksi.php'; // atau sesuaikan path
+include './koneksi.php'; 
 
-$id_kelas = $_GET['id_kelas'] ?? null;
+// Ambil id_kelas dari session
+$id_kelas = $_SESSION['id_kelas'] ?? null;
 
 if (!$id_kelas) {
-  echo json_encode(["error" => "ID kelas tidak dikirim"]);
+  echo json_encode(["error" => "ID kelas tidak ditemukan di session"]);
   exit;
 }
 
+// Query ambil siswa sesuai kelas dari session
 $query = "SELECT * FROM siswa WHERE id_kelas = ?";
 $stmt = $koneksi->prepare($query);
 $stmt->bind_param("i", $id_kelas);
