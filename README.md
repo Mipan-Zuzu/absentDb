@@ -2,10 +2,9 @@
 
 **Empowering Seamless Data, Igniting Innovation Everywhere**
 
-![Last Commit](https://img.shields.io/github/last-commit/Nipam-Zuzu/absentDb?style=for-the-badge&color=blue)
-![GitHub Repo stars](https://img.shields.io/github/stars/Nipam-Zuzu/absentDb?style=for-the-badge)
-![GitHub Forks](https://img.shields.io/github/forks/Nipam-Zuzu/absentDb?style=for-the-badge)
-![Languages](https://img.shields.io/github/languages/count/Nipam-Zuzu/absentDb?style=for-the-badge)
+![Language](https://img.shields.io/github/languages/top/Mipan-Zuzu/absentDb?style=flat&color=0080ff)
+![Last Commit](https://img.shields.io/github/last-commit/Mipan-Zuzu/absentDb?style=flat&logo=git&logoColor=white&color=0080ff)
+![Language Use](https://img.shields.io/github/languages/count/Mipan-Zuzu/absentDb?style=flat&color=0080ff)
 
 ---
 
