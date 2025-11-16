@@ -1,9 +1,7 @@
-// Tanggal hari ini
 const tanggal = document.getElementById("tanggal");
 const Day = new Date();
 tanggal.innerText = Day.toDateString();
 
-// Status siswa via select
 document.querySelectorAll("select[name^='absen']").forEach(select => {
   select.addEventListener("change", function () {
     const idSiswa = this.name.match(/\d+/)[0];
@@ -22,7 +20,7 @@ document.querySelectorAll("select[name^='absen']").forEach(select => {
   });
 });
 
-// AssistiveTouch
+//! AssistiveTouch
 const ball = document.getElementById("assistiveTouch");
 const menu = document.getElementById("assistiveMenu");
 const modalBackdrop = document.getElementById("modalBackdrop");
@@ -31,7 +29,6 @@ const modalContent = document.getElementById("modalContent");
 let isDragging = false, hasMoved = false;
 let offsetX = 0, offsetY = 0;
 
-// Modal functions
 function showModal(html) {
   modalContent.innerHTML = html;
   modalBackdrop.style.display = "flex";
@@ -44,7 +41,6 @@ modalBackdrop.addEventListener("click", (e) => {
   if (e.target === modalBackdrop) closeModal();
 });
 
-// Drag functions
 function startDrag(e) {
   isDragging = true; hasMoved = false;
   const evt = e.touches ? e.touches[0] : e;
@@ -87,7 +83,6 @@ function endDrag() {
 ball.addEventListener("mousedown", startDrag);
 ball.addEventListener("touchstart", startDrag);
 
-// Toggle menu
 ball.addEventListener("click", () => {
   if (hasMoved) return;
 
@@ -103,14 +98,13 @@ ball.addEventListener("click", () => {
   }
 });
 
-// Klik di luar menu → tutup
 document.addEventListener("click", (e) => {
   if (!menu.contains(e.target) && e.target !== ball) {
     menu.style.display = "none";
   }
 });
 
-// Help buttons
+//todo :  Help buttons
 document.getElementById("helpBtnDesktop").addEventListener("click", showHelp);
 document.getElementById("helpBtnMobile").addEventListener("click", showHelp);
 
@@ -143,6 +137,5 @@ function showHelp(e) {
   showModal(html);
 }
 
-// Tombol logout & reload
 document.getElementById("logout").addEventListener("click", () => window.location.href = "../logout.php");
 document.getElementById("utama").addEventListener("click", () => window.location.reload());
