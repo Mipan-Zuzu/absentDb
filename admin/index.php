@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
+    header('Location: /adminLogin.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,7 +149,7 @@
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
                         <img alt="Tailwind CSS Navbar component"
-                            src="../asset/sizu.jpeg" />
+                            src="../asset/logo.png" />
                     </div>
                 </div>
                 <ul tabindex="-1"
@@ -151,8 +160,7 @@
                             <span class="badge">New</span>
                         </a>
                     </li>
-                    <li><a href="index.php?page=setting" >Settings</a></li>
-                    <li><a href="../logout.php">Logout</a></li>
+                    <li><a href="../logoutAdmin.php">Logout</a></li>
                 </ul>
             </div>
         </div>

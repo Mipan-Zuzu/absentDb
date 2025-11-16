@@ -53,3 +53,4 @@ fetch("https://api.apilayer.com/exchangerates_data/latest?base=USD&symbols=IDR",
   .catch(error => console.log('error', error))
 
 
+  

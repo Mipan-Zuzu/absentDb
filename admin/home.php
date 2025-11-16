@@ -22,7 +22,7 @@
       <p class="text-gray-600 text-sm md:text-base">Dashboard Admin SSRI</p>
     </div>
     <button class="w-full sm:w-auto bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 text-center flex items-center gap-2">
-      <i class='bx bx-user'></i> User Profile
+      <i class='bx bx-user'></i> Admin Page
     </button>
   </div>
 
@@ -62,8 +62,8 @@
             <i class='bx bx-calendar-event text-xl'></i>
           </div>
           <div class="text-sm sm:text-base">
-            <p class="font-medium text-gray-800">File Annual Report</p>
-            <p class="text-gray-500 text-xs sm:text-sm">due in 15 days</p>
+            <p class="font-medium text-gray-800">Report Bug</p>
+            <p class="text-gray-500 text-xs sm:text-sm">Estimasi 15 Days</p>
           </div>
         </div>
           <i class='bx bx-chevron-right text-lg'></i>
@@ -86,10 +86,10 @@
 
   <div class="w-full max-w-5xl bg-white rounded-xl shadow p-5 overflow-x-auto">
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
-      <h2 class="font-semibold text-gray-800 text-lg">Mailroom</h2>
+      <h2 class="font-semibold text-gray-800 text-lg">Status Api</h2>
       <div class="flex flex-wrap items-center gap-2">
-        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Virtual Address</span>
-        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Registered Agent</span>
+        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Status</span>
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Succses</span>
         <button class="p-2 rounded-lg hover:bg-gray-100">
           <i class='bx bx-cog text-xl'></i>
         </button>
@@ -100,26 +100,20 @@
 
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 gap-2">
         <div class="flex flex-wrap items-center gap-3">
-          <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Virtual Address</span>
-          <p class="text-gray-800">State Notification</p>
+          <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Weather Api</span>
+          <p class="text-gray-800">200 OK</p>
         </div>
         <div class="flex items-center gap-2 text-gray-500 ml-auto">
-          <button class="p-2 rounded hover:bg-gray-100">
-            <i class='bx bx-trash text-lg'></i>
-          </button>
-          <button class="p-2 rounded hover:bg-gray-100">
-            <i class='bx bx-download text-lg'></i>
-          </button>
-          <button class="p-2 rounded hover:bg-gray-100">
-            <i class='bx bx-share text-lg'></i>
+          <button id="buttonApis" class="p-2 rounded hover:bg-gray-100">
+            <a href="https://api.openweathermap.org/data/2.5/weather?q=denpasar&appid=e28f434589904c8256f79516b04d2c19&units=metric">See end Point</a>
           </button>
         </div>
       </div>
 
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 gap-2">
         <div class="flex flex-wrap items-center gap-3">
-          <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Virtual Address</span>
-          <p class="text-gray-800">State Notification</p>
+          <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">exchangerates</span>
+          <p class="text-gray-800">200 OK</p>
         </div>
         <p class="text-gray-500 text-sm ml-auto">Yesterday</p>
       </div>
