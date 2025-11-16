@@ -251,11 +251,11 @@
 </div>
 
 <div class="fitur-sekolah">
-  <div class="fitur-card">
+  <a href="./mpk/absen.php" class="fitur-card">
     <i class='bx bx-calendar-check'></i>
     <h3>Absensi</h3>
     <p>Mencatat kehadiran siswa secara cepat dan akurat.</p>
-  </div>
+  </a>
 
   <div class="fitur-card">
     <i class='bx bx-book'></i>

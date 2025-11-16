@@ -2,7 +2,7 @@ const tanggal = document.getElementById("tanggal");
 const Day = new Date();
 tanggal.innerText = Day.toDateString();
 
-document.querySelectorAll("select[name^='absen']").forEach(select => {
+document.querySelectorAll("select[name^='absen']").forEach((select) => {
   select.addEventListener("change", function () {
     const idSiswa = this.name.match(/\d+/)[0];
     const statusBaru = this.value;
@@ -12,11 +12,14 @@ document.querySelectorAll("select[name^='absen']").forEach(select => {
     fetch("absen.php", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `id_siswa=${idSiswa}&status=${statusBaru}`
+      body: `id_siswa=${idSiswa}&status=${statusBaru}`,
     })
-    .then(res => res.text())
-    .then(result => console.log("SERVER:", result))
-    .catch(err => { console.error("ERROR UPDATE:", err); alert("Gagal menyimpan status!"); });
+      .then((res) => res.text())
+      .then((result) => console.log("SERVER:", result))
+      .catch((err) => {
+        console.error("ERROR UPDATE:", err);
+        alert("Gagal menyimpan status!");
+      });
   });
 });
 
@@ -26,8 +29,10 @@ const menu = document.getElementById("assistiveMenu");
 const modalBackdrop = document.getElementById("modalBackdrop");
 const modalContent = document.getElementById("modalContent");
 
-let isDragging = false, hasMoved = false;
-let offsetX = 0, offsetY = 0;
+let isDragging = false,
+  hasMoved = false;
+let offsetX = 0,
+  offsetY = 0;
 
 function showModal(html) {
   modalContent.innerHTML = html;
@@ -42,7 +47,8 @@ modalBackdrop.addEventListener("click", (e) => {
 });
 
 function startDrag(e) {
-  isDragging = true; hasMoved = false;
+  isDragging = true;
+  hasMoved = false;
   const evt = e.touches ? e.touches[0] : e;
   offsetX = evt.clientX - ball.offsetLeft;
   offsetY = evt.clientY - ball.offsetTop;
@@ -77,7 +83,7 @@ function endDrag() {
   ball.style.transition = "all 0.3s ease";
   if (rect.left + rect.width / 2 < middle) ball.style.left = "10px";
   else ball.style.left = window.innerWidth - rect.width - 10 + "px";
-  setTimeout(() => hasMoved = false, 50);
+  setTimeout(() => (hasMoved = false), 50);
 }
 
 ball.addEventListener("mousedown", startDrag);
@@ -88,11 +94,14 @@ ball.addEventListener("click", () => {
 
   if (menu.style.display === "flex") {
     menu.style.animation = "bubbleOut 0.25s ease forwards";
-    setTimeout(() => menu.style.display = "none", 250);
+    setTimeout(() => (menu.style.display = "none"), 250);
   } else {
     const rect = ball.getBoundingClientRect();
     menu.style.top = rect.top - 100 + "px";
-    menu.style.left = rect.left < window.innerWidth / 2 ? rect.right + 10 + "px" : rect.left - 280 + "px";
+    menu.style.left =
+      rect.left < window.innerWidth / 2
+        ? rect.right + 10 + "px"
+        : rect.left - 280 + "px";
     menu.style.display = "flex";
     menu.style.animation = "bubble 0.25s ease forwards";
   }
@@ -137,5 +146,9 @@ function showHelp(e) {
   showModal(html);
 }
 
-document.getElementById("logout").addEventListener("click", () => window.location.href = "../logout.php");
-document.getElementById("utama").addEventListener("click", () => window.location.reload());
+document
+  .getElementById("logout")
+  .addEventListener("click", () => (window.location.href = "../logout.php"));
+document
+  .getElementById("utama")
+  .addEventListener("click", () => window.location.reload());

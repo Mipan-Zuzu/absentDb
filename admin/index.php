@@ -63,36 +63,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
                     <div>
                         <ul class="text-1xl">
                             <li class="mb-2">Page</li>
-                            <li>
-                                <details class="dropdown">
-                                    <summary class="m-1">Siswa X</summary>
-                                    <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                                        <li><a href="index.php?page=kelas&nama_kelas=10%20RPL">X RPL</a></li>
-                                        <li><a>X TKJ</a></li>
-                                        <li><a>X SR</a></li>
-                                        <li><a>X PATUNG</a></li>
-                                        <li><a>X DITF</a></li>
-                                        <li><a>X DKV I</a></li>
-                                        <li><a>X DKV II</a></li>
-                                        <li><a>X KRIYA</a></li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li>
-                                <details class="dropdown">
-                                    <summary class="m-1">Siswa XI</summary>
-                                    <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                                        <li><a>XI RPL</a></li>
-                                        <li><a>XI TKJ</a></li>
-                                        <li><a>XI SR</a></li>
-                                        <li><a>XI PATUNG</a></li>
-                                        <li><a>XI DITF</a></li>
-                                        <li><a>XI DKV I</a></li>
-                                        <li><a>XI DKV II</a></li>
-                                        <li><a>XI KRIYA</a></li>
-                                    </ul>
-                                </details>
-                            </li>
                             <li class="mb-1">
                                 <a href="index.php?page=guru" class="justify-between">
                                     Guru
